@@ -1,51 +1,159 @@
 <!---
 {
-  "depends_on": [],
+  "id": "66726805-4497-4dce-a1ba-ccf930a721f8",
+  "depends_on": ["AND",
+    "00650b50-14de-471d-a347-246f47ffadde", 
+    "05894bad-a8de-413a-86ce-166579682bbc"
+    ],
   "author": "Stephan Bökelmann",
-  "first_used": "2025-03-17",
-  "keywords": ["learning", "exercises", "education", "practice"]
+  "first_used": "2025-06-02",
+  "keywords": ["LaTeX", "figures", "floats", "images", "vim"]
 }
 --->
 
-# Learning Through Exercises
+# Inserting Figures in LaTeX
 
-## Introduction
-Learning by doing is one of the most effective methods to acquire new knowledge and skills. Rather than passively consuming information, actively engaging in problem-solving fosters deeper understanding and long-term retention. By working through structured exercises, students can grasp complex concepts in a more intuitive and applicable way. This approach is particularly beneficial in technical fields like programming, mathematics, and engineering.
+> In this exercise you will learn how to insert images into LaTeX documents using the `figure` environment. Furthermore we will explore captions and basic placement options.
+
+### Introduction
+
+Visual content such as images, diagrams, and plots are essential components of technical and scientific documents. In LaTeX, images are inserted using the `figure` environment together with the `graphicx` package.
+
+Captions are added with the `\caption{...}` command inside the `figure` environment. This provides numbered captions and ensures consistency throughout the document.
+
+Before using images, the `graphicx` package must be loaded in the preamble with:
+
+```latex
+\usepackage{graphicx}
+```
+
+Images should be provided in supported formats such as PDF, PNG, or JPG. They are typically placed in a `figures/` subdirectory.
 
 ### Further Readings and Other Sources
-- [The Importance of Practice in Learning](https://www.sciencedirect.com/science/article/pii/S036013151300062X)
-- "The Art of Learning" by Josh Waitzkin
-- [How to Learn Effectively: 5 Key Strategies](https://www.edutopia.org/article/5-research-backed-learning-strategies)
+
+* [Overleaf: Inserting Images](https://www.overleaf.com/learn/latex/Inserting_Images)
+* [LaTeX Wikibook - Floats, Figures and Captions](https://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions)
+* [YouTube - LaTeX Figures Tutorial](https://www.youtube.com/watch?v=_pZbVoj-csI)
+* [The Not So Short Introduction to LaTeX (Figures Section)](https://tobi.oetiker.ch/lshort/lshort.pdf)
+
+---
 
 ## Tasks
-1. **Write a Summary**: Summarize the concept of "learning by doing" in 3-5 sentences.
-2. **Example Identification**: List three examples from your own experience where learning through exercises helped you understand a topic better.
-3. **Create an Exercise**: Design a simple exercise for a topic of your choice that someone else could use to practice.
-4. **Follow an Exercise**: Find an online tutorial that includes exercises and complete at least two of them.
-5. **Modify an Existing Exercise**: Take a basic problem from a textbook or online course and modify it to make it slightly more challenging.
-6. **Pair Learning**: Explain a concept to a partner and guide them through an exercise without giving direct answers.
-7. **Review Mistakes**: Look at an exercise you've previously completed incorrectly. Identify why the mistake happened and how to prevent it in the future.
-8. **Time Challenge**: Set a timer for 10 minutes and try to solve as many simple exercises as possible on a given topic.
-9. **Self-Assessment**: Create a checklist to evaluate your own performance in completing exercises effectively.
-10. **Reflect on Progress**: Write a short paragraph on how this structured approach to exercises has influenced your learning.
 
-<details>
-  <summary>Tip for Task 5</summary>
-  Try making small adjustments first, such as increasing the difficulty slightly or adding an extra constraint.
-</details>
+### Prepare Assets
+
+We will follow a clean directory structure which separates source files (`src/`) from figures (`figures/`). This structure is common for larger projects and helps to keep all files organized and maintainable, especially as the number of images and source files grows.
+
+First, create the necessary directories:
+
+```bash
+mkdir -p src figures
+```
+
+Download the image files into the `figures/` subdirectory using `curl`:
+
+```bash
+curl -o figures/picture.png https://github.com/STEMgraph/66726805-4497-4dce-a1ba-ccf930a721f8/blob/master/assets/picture.png?raw=true
+curl -o figures/chart.png https://github.com/STEMgraph/66726805-4497-4dce-a1ba-ccf930a721f8/blob/master/assets/chart.png?raw=true
+```
+
+Then, create an empty LaTeX source file inside `src/` with the touch command:
+
+```bash
+touch src/main.tex
+```
+
+For now, you can simply store the empty file. We will build up its content step by step.
+
+Your directory structure should now look like this:
+
+```text
+.
+├── figures
+│   ├── chart.png
+│   └── picture.png
+└── src
+    └── main.tex
+```
+
+### Task 2: Insert a Simple Figure
+
+Open `src/main.tex` again and insert the following minimal structure and simple figure:
+
+```latex
+\documentclass{article}
+\usepackage{graphicx}
+
+\begin{document}
+
+\section{Simple Figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.5\textwidth]{figures/picture.png}
+  \caption{A simple diagram}
+\end{figure}
+
+\end{document}
+```
+
+Compile with:
+
+```bash
+pdflatex src/main.tex
+```
+
+Verify that the image is inserted with a caption.
+
+### Task 3: Insert Another Figure with Placement Option
+
+Extend your file with another section:
+
+```latex
+\section{Another Figure}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.7\textwidth]{figures/chart.png}
+  \caption{A sample chart}
+\end{figure}
+```
+
+Recompile and observe where LaTeX positions the figure.
+
+### Task 4: Insert Multiple Figures
+
+Add a third section to practice multiple figures:
+
+```latex
+\section{Multiple Figures}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.4\textwidth]{figures/picture.png}
+  \caption{First appearance of picture}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.4\textwidth]{figures/chart.png}
+  \caption{Second appearance of chart}
+\end{figure}
+```
+
+Recompile and observe the layout.
+
+---
 
 ## Questions
-1. What are the main benefits of learning through exercises compared to passive learning?
-2. How do exercises improve long-term retention?
-3. Can you think of a subject where learning through exercises might be less effective? Why?
-4. What role does feedback play in learning through exercises?
-5. How can self-designed exercises improve understanding?
-6. Why is it beneficial to review past mistakes in exercises?
-7. How does explaining a concept to someone else reinforce your own understanding?
-8. What strategies can you use to stay motivated when practicing with exercises?
-9. How can timed challenges contribute to learning efficiency?
-10. How do exercises help bridge the gap between theory and practical application?
+
+1. Why is the `graphicx` package necessary for including images?
+2. What happens if you omit `\centering` inside a `figure`?
+3. How does LaTeX number the figures automatically?
+4. Why is separating figures into their own folder helpful?
+
+---
 
 ## Advice
-Practice consistently and seek out diverse exercises that challenge different aspects of a topic. Combine exercises with reflection and feedback to maximize your learning efficiency. Don't hesitate to adapt exercises to fit your own needs and ensure that you're actively engaging with the material, rather than just going through the motions.
 
+Always place images in a separate subdirectory to keep your project organized. Use captions consistently so that all figures are numbered automatically. Try not to worry too much about exact positioning yet; the main goal is to build good habits in structuring your documents. Later, you will learn how to reference figures properly and gain more control over their placement.
