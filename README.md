@@ -53,8 +53,8 @@ mkdir -p src figures
 Download the image files into the `figures/` subdirectory using `curl`:
 
 ```bash
-curl -o figures/picture.png https://github.com/STEMgraph/66726805-4497-4dce-a1ba-ccf930a721f8/blob/master/assets/picture.png?raw=true
-curl -o figures/chart.png https://github.com/STEMgraph/66726805-4497-4dce-a1ba-ccf930a721f8/blob/master/assets/chart.png?raw=true
+curl -o figures/picture.png https://raw.githubusercontent.com/STEMgraph/66726805-4497-4dce-a1ba-ccf930a721f8/master/assets/picture.png
+curl -o figures/chart.png https://raw.githubusercontent.com/STEMgraph/66726805-4497-4dce-a1ba-ccf930a721f8/master/assets/chart.png
 ```
 
 Then, create an empty LaTeX source file inside `src/` with the touch command:
