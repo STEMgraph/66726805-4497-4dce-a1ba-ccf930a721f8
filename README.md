@@ -1,6 +1,7 @@
 <!---
 {
   "id": "66726805-4497-4dce-a1ba-ccf930a721f8",
+  "teaches": "Inserting Figures in LaTeX",
   "depends_on": [
     "00650b50-14de-471d-a347-246f47ffadde", 
     "05894bad-a8de-413a-86ce-166579682bbc"
